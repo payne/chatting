@@ -1,0 +1,6 @@
+<form [formGroup]="filterForm" (ngSubmit)="handleSubmit()">
+    <div class="input-group mb-3">
+        <input formControlName="filter" type="text" name="filter" [placeholder]="placeholder" class="form-control" />
+        <button type="submit" class="btn btn-secondary" i18n="@@searchFilter.apply">Apply</button>
+    </div>
+</form>

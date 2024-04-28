@@ -1,0 +1,12 @@
+<div class="d-flex flex-wrap mb-4">
+    <h1 class="flex-grow-1" i18n="@@session.edit.headline">Edit Session</h1>
+    <div>
+        <a routerLink="/sessions" class="btn btn-secondary" i18n="@@session.edit.back">Back to list</a>
+    </div>
+</div>
+<form [formGroup]="editForm" (ngSubmit)="handleSubmit()">
+    <app-input-row [group]="editForm" field="id" rowType="number" i18n-label="@@session.id.label" label="Id" />
+    <app-input-row [group]="editForm" field="startedAt" datepicker="datetimepicker" i18n-label="@@session.startedAt.label" label="Started At" />
+    <app-input-row [group]="editForm" field="person" rowType="select" [options]="personValues" i18n-label="@@session.person.label" label="Person" />
+    <input type="submit" i18n-value="@@session.edit.headline" value="Edit Session" class="btn btn-primary mt-4" />
+</form>

@@ -1,0 +1,13 @@
+<div class="d-flex flex-wrap mb-4">
+    <h1 class="flex-grow-1" i18n="@@chat.edit.headline">Edit Chat</h1>
+    <div>
+        <a routerLink="/chats" class="btn btn-secondary" i18n="@@chat.edit.back">Back to list</a>
+    </div>
+</div>
+<form [formGroup]="editForm" (ngSubmit)="handleSubmit()">
+    <app-input-row [group]="editForm" field="id" rowType="number" i18n-label="@@chat.id.label" label="Id" />
+    <app-input-row [group]="editForm" field="message" rowType="textarea" i18n-label="@@chat.message.label" label="Message" />
+    <app-input-row [group]="editForm" field="response" rowType="textarea" i18n-label="@@chat.response.label" label="Response" />
+    <app-input-row [group]="editForm" field="session" rowType="select" [options]="sessionValues" i18n-label="@@chat.session.label" label="Session" />
+    <input type="submit" i18n-value="@@chat.edit.headline" value="Edit Chat" class="btn btn-primary mt-4" />
+</form>

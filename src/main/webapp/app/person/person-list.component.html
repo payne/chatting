@@ -1,0 +1,46 @@
+<div class="d-flex flex-wrap mb-4">
+    <h1 class="flex-grow-1" i18n="@@person.list.headline">Persons</h1>
+    <div>
+        <a routerLink="/people/add" class="btn btn-primary ms-2" i18n="@@person.list.createNew">Create new Person</a>
+    </div>
+</div>
+@if ((persons && persons.totalElements !== 0) || route.snapshot.queryParamMap.get('filter')) {
+<div class="row">
+    <app-search-filter i18n-placeholder="@@person.list.filter" placeholder="Filter by Id" class="col-md-6 col-lg-4" />
+    <app-sorting [sortOptions]="sortOptions" class="col-md-6 col-lg-4 offset-lg-4" />
+</div>
+}
+@if (!persons || persons.totalElements === 0) {
+<div i18n="@@person.list.empty">No Persons could be found.</div>
+} @else {
+<div class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+        <thead>
+            <tr>
+                <th scope="col" i18n="@@person.id.label">Id</th>
+                <th scope="col" i18n="@@person.email.label">Email</th>
+                <th scope="col" i18n="@@person.firstName.label">First Name</th>
+                <th scope="col" i18n="@@person.lastName.label">Last Name</th>
+                <th><!-- --></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (person of persons.content; track person.id) {
+            <tr>
+                <td>{{ person.id }}</td>
+                <td>{{ person.email }}</td>
+                <td>{{ person.firstName }}</td>
+                <td>{{ person.lastName }}</td>
+                <td>
+                    <div class="float-end text-nowrap">
+                        <a [routerLink]="['/people/edit', person.id]" class="btn btn-sm btn-secondary" i18n="@@person.list.edit">Edit</a>
+                        <button type="button" (click)="confirmDelete(person.id!)" class="btn btn-sm btn-secondary" i18n="@@person.list.delete">Delete</button>
+                    </div>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<app-pagination [page]="persons" />
+}

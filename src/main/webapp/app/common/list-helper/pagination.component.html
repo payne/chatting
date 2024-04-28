@@ -1,0 +1,14 @@
+<div class="row mt-4">
+    @if (steps.length > 3) {
+    <nav class="col-sm-8">
+        <ul class="pagination">
+            @for (step of steps; track step.label) {
+            <li class="page-item {{ step.active ? 'active' : '' }} {{ step.disabled ? 'disabled' : '' }}">
+                <a [routerLink]="pathname" [queryParams]="step.params" class="page-link">{{ step.label }}</a>
+            </li>
+            }
+        </ul>
+    </nav>
+    }
+    <div class="col-sm-4 pt-sm-2 text-sm-end {{ steps.length <= 3 ? 'offset-sm-8' : '' }}">Item {{ range }} of {{ page!.totalElements }}</div>
+</div>
