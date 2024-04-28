@@ -3,6 +3,13 @@
 This app was created with Bootify.io - tips on working with the code [can be found here](https://bootify.io/next-steps/).
 Feel free to contact us for further questions.
 
+## Note from Matt Payne
+
+It took minutes to create.  Here's a screen grab of the database ERD:
+
+![ERD](chatting-erd.png)
+
+
 ## Development
 
 Update your local database connection in `application.properties` or create your own `application-local.properties` file to override
